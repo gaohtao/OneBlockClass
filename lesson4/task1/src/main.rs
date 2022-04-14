@@ -3,9 +3,10 @@
 */ 
 
 fn main() {
-    println!("{:?} duration time =  {}", TrafficLight::Red, TrafficLight::Red.get_duration_time());
-    println!("{:?} duration time =  {}", TrafficLight::Green, TrafficLight::Green.get_duration_time());
-    println!("{:?} duration time =  {}", TrafficLight::Yellow, TrafficLight::Yellow.get_duration_time());
+    println!("{:?}: duration time =  {}", TrafficLight::Red, TrafficLight::Red.get_duration_time());
+    println!("{:?}: duration time =  {}", TrafficLight::Green, TrafficLight::Green.get_duration_time());
+    println!("{:?}: duration time =  {}", TrafficLight::Yellow, TrafficLight::Yellow.get_duration_time());
+
 }
 
 #[derive(Debug)]
@@ -23,13 +24,11 @@ trait Duration {
 }
 
 impl Duration for TrafficLight{
-    fn get_duration_time(&self) -> i32{
-        let time:i32;
+    fn get_duration_time(&self) -> i32{        
         match self {
-            TrafficLight::Red =>  time=60i32,
-            TrafficLight::Green =>  time=20i32,
-            TrafficLight::Yellow =>  time=3i32,
+            TrafficLight::Red =>  60,
+            TrafficLight::Green =>  20,
+            TrafficLight::Yellow =>  3,
         }
-        time
     }
 }
