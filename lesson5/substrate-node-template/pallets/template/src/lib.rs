@@ -137,7 +137,11 @@ pub mod pallet {
             let current_block = <frame_system::Pallet<T>>::block_number();
 
             // Store the proof with the new receiver and block number.
-            Proofs::<T>::insert(&proof, (&receiver, current_block));
+            //Proofs::<T>::insert(&proof, (&receiver, current_block));
+	   Proofs::<T>::mutate(&proof, |value| {
+                value.as_mut().unwrap().0 = receiver.clone();
+                value.as_mut().unwrap().1 = current_block;
+            });
 
             // Emit an event that the claim was created.
             Self::deposit_event(Event::ClaimTransfered(sender, receiver,proof));
